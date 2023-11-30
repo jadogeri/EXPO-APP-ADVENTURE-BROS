@@ -56,7 +56,7 @@ const Stack = createStackNavigator();
 const StackContainer = () => {
   return (
  
-    <Stack.Navigator headerMode='none' initialRouteName='Roster' // screenOptions={screenOptionStyle} 
+    <Stack.Navigator headerMode='none' initialRouteName='Mode' // screenOptions={screenOptionStyle} 
     >
        <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Roster" component={RosterScreen} />
