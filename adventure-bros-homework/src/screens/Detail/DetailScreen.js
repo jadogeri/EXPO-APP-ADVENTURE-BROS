@@ -18,6 +18,7 @@ const DetailScreen = (props, { navigation }) => {
 
     const {state, getPlayer} = useContext(PlayerContext)
     const  {state : gameState} = useContext(GameContext)
+    // const [globalGold, setGlobalGold] = (gameState[0].total_gold)
     //const playerID = props.navigation.getParam('id')
 
     console.log(playerID)
@@ -25,14 +26,12 @@ const DetailScreen = (props, { navigation }) => {
     const player = state.find((character) => {
         return playerID === character.id
     })
-
     
     console.log(JSON.stringify(player))
 
-
-
     return (
         <View style={styles.container}>
+            <Text>TOTAL STATE {JSON.stringify(gameState)}</Text>
                <Text style={{color:'green',size:20}}>{JSON.stringify(gameState)}</Text>
             <PlayerDetailCard name={player.name} currentHeal={player.currentHealth}
             maxHealth={player.maxHealth} power={player.power} gold={player.gold}
@@ -42,10 +41,16 @@ const DetailScreen = (props, { navigation }) => {
           {/* <Detail /> */}
            <View>
                 <TouchableOpacity style={styles.touchContainer}>
-                    <View style={styles.t_container}>
-                     
+                    <View style={styles.t_container}>                     
 
-                        <Text style={styles.text1}>USE BAG💰 </Text>
+                        <Text style={styles.text1}>USE TOTAL BAG💰 </Text>
+
+                    </View>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.touchContainer}>
+                    <View style={styles.t_container}>                     
+
+                        <Text style={styles.text1}>MY BAG💰 </Text>
 
                     </View>
                 </TouchableOpacity>
@@ -53,6 +58,8 @@ const DetailScreen = (props, { navigation }) => {
                 <TouchableOpacity style={styles.touchContainer} onPress={() => { props.navigation.navigate("Roster") }}>
                     <View style={styles.t1_container}>
                         <Text style={styles.text2}>ROASTER</Text>
+                        <Text>TOTAL STATE {JSON.stringify(gameState)}</Text>
+
                     </View>
                 </TouchableOpacity>
             </View>

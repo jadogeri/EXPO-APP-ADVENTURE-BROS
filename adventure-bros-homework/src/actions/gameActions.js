@@ -1,7 +1,7 @@
 
 const updateGameStatus = (dispatch) => {
-    return  (total_gold, mode, game_status) => {
-        dispatch({ type: 'game_start', payload: {mode : mode, total_gold : total_gold ,game_status :game_status} });
+    return  (total_gold, mode, game_status, current_round) => {
+        dispatch({ type: 'game_start', payload: {mode : mode, total_gold : total_gold ,game_status :game_status, current_round : current_round} });
     
     }
 }

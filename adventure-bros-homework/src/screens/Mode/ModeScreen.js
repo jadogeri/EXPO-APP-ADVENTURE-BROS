@@ -31,7 +31,7 @@ const ModeScreen = (props) => {
 
 
             <Button title={gold === 0 ? "CHOOSE DIFFICULTY" : "ENTER GAME"}
-                onPress={gold > 0 ? () => {updateGameStatus(gold,difficulty,'GAME_STARTED'); props.navigation.navigate("Roster", difficulty) } : () => { }} />
+                onPress={gold > 0 ? () => {updateGameStatus(gold,difficulty,'GAME_STARTED',1); props.navigation.navigate("Roster", difficulty) } : () => { }} />
 
         </View>
         <View style={{ flex: 0.10, backgroundColor: 'black' }}>
