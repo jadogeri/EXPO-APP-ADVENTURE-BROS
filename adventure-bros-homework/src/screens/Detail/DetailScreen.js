@@ -18,6 +18,7 @@ const DetailScreen = (props, { navigation }) => {
 
     const {state, getPlayer} = useContext(PlayerContext)
     const  {state : gameState} = useContext(GameContext)
+    const stateObject = gameState[0]
     // const [globalGold, setGlobalGold] = (gameState[0].total_gold)
     //const playerID = props.navigation.getParam('id')
 
@@ -59,6 +60,8 @@ const DetailScreen = (props, { navigation }) => {
                     <View style={styles.t1_container}>
                         <Text style={styles.text2}>ROASTER</Text>
                         <Text>TOTAL STATE {JSON.stringify(gameState)}</Text>
+                        <Text>TOTAL STATE OBJECT {JSON.stringify(stateObject)}</Text>
+
 
                     </View>
                 </TouchableOpacity>
