@@ -19,9 +19,9 @@ const editTotalGold = (dispatch) => {
     }
 }
 
-const editRounds = (dispatch) => {
+const editRoundVerdict = (dispatch) => {
     return  (rounds) => {
-        dispatch({ type: 'edit_total_rounds', payload: {total_rounds : rounds} });    
+        dispatch({ type: 'edit_round_verdict', payload :{}});    
     }
 }
-export default [updateGameStatus,updateGameMode,editTotalGold,editRounds]
+export default [updateGameStatus,updateGameMode,editTotalGold,editRoundVerdict]

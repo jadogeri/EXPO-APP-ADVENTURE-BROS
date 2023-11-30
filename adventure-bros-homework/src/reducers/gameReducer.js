@@ -27,6 +27,15 @@ export const gameReducer = (state, action) => {
                     return hero;
                 }
             })
+            case 'edit_round_verdict':
+                return state.map((hero) => {
+                    if (hero.id === action.payload.id) {
+                        return action.payload;
+                    }
+                    else {
+                        return hero;
+                    }
+                })
         default:
             return state;
     }

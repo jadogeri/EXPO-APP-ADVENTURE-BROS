@@ -5,6 +5,7 @@ import RosterScreen from './src/screens/Roster/RosterScreen';
 import DetailScreen from './src/screens/Detail/DetailScreen';
 import AdventureScreen from './src/screens/Adventure/AdventureScreen';
 import RuleScreen from './src/screens/Rule/RuleScreen';
+import ModeScreen from './src/screens/Mode/ModeScreen';
 import { Provider as PlayerProvider } from "./src/context/PlayerContext";
 import {Provider as GameProvider } from "./src/context/GameContext";
 import { StatusBar } from 'expo-status-bar';
@@ -63,6 +64,7 @@ const StackContainer = () => {
       <Stack.Screen name="Rule" component={RuleScreen} />
       <Stack.Screen name="Detail" component={DetailScreen} />
       <Stack.Screen name="Verdict" component={VerdictScreen} />
+      <Stack.Screen name="Mode" component={ModeScreen} />
 
     </Stack.Navigator>
   );

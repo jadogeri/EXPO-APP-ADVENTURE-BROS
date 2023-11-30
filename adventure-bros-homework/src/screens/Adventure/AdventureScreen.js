@@ -61,7 +61,7 @@ const AdventureScreen = (props) => {
 
             </View>
             <Text>{JSON.stringify(stageKey)}</Text>
-                <Text>{JSON.stringify(stage)}</Text>
+                <Text>{JSON.stringify(stageName)}</Text>
                 
                 <Text>p1 {JSON.stringify(team)}</Text>
                 <Text>{JSON.stringify(state)}</Text>
