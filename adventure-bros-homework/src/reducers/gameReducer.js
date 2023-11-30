@@ -27,6 +27,14 @@ export const gameReducer = (state, action) => {
                     return hero;
                 }
             })
+
+            case 'game_start':
+                /**  [{game_status :"", mode:"", current_round : 0,total_gold:0, max_rounds :6, completed_rounds: 0,
+     is_current_round : false, is_current_round_completed : false, stageKey : ''}] */
+                state[0].mode = action.payload.mode
+                state[0].total_gold = action.payload.total_gold
+                state[0].game_status = action.payload.game_status
+                return state
             case 'edit_round_verdict':
                 return state.map((hero) => {
                     if (hero.id === action.payload.id) {

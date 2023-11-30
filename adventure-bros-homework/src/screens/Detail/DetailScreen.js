@@ -4,13 +4,22 @@ import { View, Button, TouchableOpacity, Text, ImageBackground, StyleSheet, Safe
 import Detail from '../../components/Detail';
 import styles from './DetailStyle'
 import {Context as PlayerContext} from '../../context/PlayerContext'
+import { Context as GameContext } from '../../context/GameContext';
 import PlayerDetailCard from '../../components/PlayerDetailCard';
+import { useRoute } from '@react-navigation/native';
+
 
 
 {/* main component: CharacterScreen */ }
 const DetailScreen = (props, { navigation }) => {
+
+    const route = useRoute('id')
+    const playerID = route.params?.id
+
     const {state, getPlayer} = useContext(PlayerContext)
-    const playerID = props.navigation.getParam('id')
+    const  {state : gameState} = useContext(GameContext)
+    //const playerID = props.navigation.getParam('id')
+
     console.log(playerID)
 
     const player = state.find((character) => {
@@ -24,6 +33,7 @@ const DetailScreen = (props, { navigation }) => {
 
     return (
         <View style={styles.container}>
+               <Text style={{color:'green',size:20}}>{JSON.stringify(gameState)}</Text>
             <PlayerDetailCard name={player.name} currentHeal={player.currentHealth}
             maxHealth={player.maxHealth} power={player.power} gold={player.gold}
             level={player.level}
@@ -33,6 +43,7 @@ const DetailScreen = (props, { navigation }) => {
            <View>
                 <TouchableOpacity style={styles.touchContainer}>
                     <View style={styles.t_container}>
+                     
 
                         <Text style={styles.text1}>USE BAG💰 </Text>
 

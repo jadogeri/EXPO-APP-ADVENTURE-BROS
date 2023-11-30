@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {View, StyleSheet, Button,Text} from 'react-native';
 import DifficultyButton from '../../components/DifficultyButton';
+import { Context as GameContext} from '../../context/GameContext';
 
-const ModeScreen = () => {
+const ModeScreen = (props) => {
 
     const EASY = 300;
     const MEDIUM = 200;
@@ -13,23 +14,24 @@ const ModeScreen = () => {
         medium: MEDIUM,
         hard: HARD
     }
-
-    const [difficulty, setDifficulty] = useState({ value: 0 })
+    
+    const {updateGameStatus} = useContext(GameContext);
+    const [difficulty, setDifficulty] = useState('')
+    const [gold, setGold] = useState(0);
     return <View style={{ backgroundColor: 'yellow', flex: 1 }}>
 
         <View style={{ backgroundColor: 'black', flex: 1, alignItems: 'center' }} >
 
             <Text style={style.text}> GAME DIFFICULTY</Text>
 
-            <DifficultyButton points={gameLevel.easy} imageSource={require('../../../assets/icons/easy.png')} modeHandler={() => { setDifficulty({ value: gameLevel.easy }) }} />
-            <DifficultyButton points={gameLevel.medium} imageSource={require('../../../assets/icons/medium.png')} modeHandler={() => { setDifficulty({ value: gameLevel.medium }) }} />
-            <DifficultyButton points={gameLevel.hard} imageSource={require('../../../assets/icons/hard.png')} modeHandler={() => { setDifficulty({ value: gameLevel.hard }) }} />
-            <Text style={{ backgroundColor: 'black' }}> {difficulty.value} </Text>
+            <DifficultyButton points={gameLevel.easy} imageSource={require('../../../assets/icons/easy.png')} modeHandler={() => { setGold(EASY); setDifficulty( 'EASY') }} />
+            <DifficultyButton points={gameLevel.medium} imageSource={require('../../../assets/icons/medium.png')} modeHandler={() => {setGold(MEDIUM); setDifficulty('MEDIUM') }} />
+            <DifficultyButton points={gameLevel.hard} imageSource={require('../../../assets/icons/hard.png')} modeHandler={() => {setGold(HARD); setDifficulty('HARD') }} />
+            <Text style={{ backgroundColor: 'black' }}> {difficulty} </Text>
 
 
-            <Button title={difficulty.value === 0 ? "CHOOSE DIFFICULTY" : "ENTER GAME"}
-                onPress={difficulty.value > 0 ? () => { props.navigation.navigate("Roster", difficulty) } : () => { }} />
-
+            <Button title={gold === 0 ? "CHOOSE DIFFICULTY" : "ENTER GAME"}
+                onPress={gold > 0 ? () => {updateGameStatus(gold,difficulty,'GAME_STARTED'); props.navigation.navigate("Roster", difficulty) } : () => { }} />
 
         </View>
         <View style={{ flex: 0.10, backgroundColor: 'black' }}>

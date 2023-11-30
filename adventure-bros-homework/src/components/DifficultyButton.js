@@ -8,7 +8,7 @@ const  DifficultyButton= (props)=>  {
     return  <View style={{flex:2,flexDirection:"row", alignItems:'center'}}>
             <TouchableOpacity onPress={props.modeHandler}>                 
 
-                <Image style = {imageStyle.style} source={props.imageSource} />
+                <Image style={{width:150,height:150}} source={props.imageSource} />
                                
             </TouchableOpacity> 
 
