@@ -3,8 +3,6 @@ import {View , Text , StyleSheet, Image,TouchableOpacity } from "react-native";
 
 const  DifficultyButton= (props)=>  {
   
-    console.log(props);
-
     return  <View style={{flex:2,flexDirection:"row", alignItems:'center'}}>
             <TouchableOpacity onPress={props.modeHandler}>                 
 
@@ -15,9 +13,7 @@ const  DifficultyButton= (props)=>  {
             <Text style={{backgroundColor:'black',color: 'green'}}> {props.points} points</Text>
 
 
-            </View>
-
-  
+            </View>  
 }
 
 

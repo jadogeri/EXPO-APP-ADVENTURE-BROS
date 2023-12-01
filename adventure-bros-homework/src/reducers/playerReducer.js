@@ -24,6 +24,14 @@ export const playerReducer = (state, action) => {
                     return character
                 }
             });
+        case 'delete_Dead_Players':
+            return state.filter((character) => {
+                if (character.currentHealth > 0) {
+                    return character
+                }
+            });
+        case 'delete_All_Players':
+            return []
         case 'edit_Player':
             return state.map((hero) => {
                 if (hero.id === action.payload.id) {
@@ -42,6 +50,8 @@ export const playerReducer = (state, action) => {
                     return hero;
                 }
             })
+          
+        
         default:
             return state;
     }

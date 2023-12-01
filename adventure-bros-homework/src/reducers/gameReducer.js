@@ -37,7 +37,11 @@ export const gameReducer = (state, action) => {
             state[0].stageKey = '' 
 
             return state
-        
+        case 'edit_round_count':
+
+        state[0].current_round = action.payload.current_round
+        return state
+               
         case 'round_lost':
 
         state[0].game_staus = 'ROUND_LOST'

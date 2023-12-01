@@ -52,6 +52,41 @@ const styles = StyleSheet.create({
     touchContainer:{
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    text: {
+
+        margin: 10,
+        borderWidth: 10,
+        borderColor: 'green',
+        padding: 1
+
+    },
+    background:{
+
+        flex:1,
+        backgroundColor :'gray',
+        textShadowColor : 'green',
+        textShadowRadius:20
+    },
+    button:{
+        width:20,
+        height:50,
+    },
+    textStyle:{
+        fontSize: 50,
+        fontStyle:"italic",
+        fontWeight :"bold",
+        textAlign: 'center',
+        textShadowColor : 'green',
+        textShadowRadius:20   
+    },
+    textHeader:{
+        fontSize: 20,
+        fontStyle:"italic",
+        fontWeight :"bold",
+        textAlign: 'center',
+        textShadowColor : 'green',
+        textShadowRadius:20
     }
 });
 

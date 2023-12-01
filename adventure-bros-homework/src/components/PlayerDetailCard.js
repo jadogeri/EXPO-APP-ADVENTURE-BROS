@@ -8,7 +8,7 @@ const PlayerDetailCard = (props) => {
         <View style={styles.card} >
             <View style={styles.nameContainer}>
                 <Text style={styles.name}> {props.name}</Text>
-                <Text style={styles.gold}> 💰 {props.gold}</Text>
+                <Text style={styles.gold}>🏆{props.current_round}/{props.max_rounds} 💰 {props.total_gold}</Text>
             </View>
             <BigIcon heroName={props.name}/>
             <Image style={styles.image} resizeMode='contain' source={props.image} accessibilityLabel={`${props.name} bros`} />

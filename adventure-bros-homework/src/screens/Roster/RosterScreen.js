@@ -50,6 +50,7 @@ const RosterScreen = (props) => {
   return (
 
     <View style={styles.container}>
+    
       <PlayerGeneratorButton 
           createPlayerHandler={() => {
         (playerNames.length > 0) ? 
@@ -62,6 +63,7 @@ const RosterScreen = (props) => {
         }}/>
 
          <View>
+          <Text>{JSON.stringify(state)}</Text>
      <FlatList 
         keyExtractor={(key)=> { return key.id}}
         data = {state}

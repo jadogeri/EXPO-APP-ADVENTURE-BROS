@@ -8,7 +8,7 @@ const Detail = (props) => {
         <View style= { styles.card } >
             <View style= { styles.nameContainer }>
                 <Text style= { styles.name }> { Roster[0].name }</Text>
-                <Text style= { styles.gold }> 💰 {Roster[0].gold}</Text>
+                <Text style= { styles.gold }>🏆 💰 {Roster[0].gold}</Text>
             </View>
             <Image style= { styles.image } resizeMode= 'contain'  source= { Roster[0].image } accessibilityLabel= { `${Roster.name} bros`} />
             <View>

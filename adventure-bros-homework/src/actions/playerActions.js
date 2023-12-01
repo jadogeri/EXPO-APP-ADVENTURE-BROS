@@ -30,6 +30,18 @@ const deletePlayer = (dispatch) => {
     }
 }
 
+const deleteAllPlayers = (dispatch) => {
+    return () => {
+        dispatch({ type: 'delete_All_Players'})
+    }
+}
+
+const deleteDeadPlayers = (dispatch) => {
+    return () => {
+        dispatch({ type: 'delete_Dead_Players'})
+    }
+}
+
 const updateIsActivePlayer = (dispatch) => {
     return (id,isActive, callback) => {
         dispatch({
@@ -43,12 +55,14 @@ const updateIsActivePlayer = (dispatch) => {
 }
 
 const editPlayer = (dispatch) => {
-    return (id, name, level, power, maxHealth, currentHealth, gold, callback) => {
+    return (id, name, level, power, maxHealth, currentHealth, gold,isActive, callback) => {
         dispatch({
             type: 'edit_Player', payload: {
                 id: id, name: name, level: level,
                 power: power, maxHealth: maxHealth,
-                currentHealth: currentHealth, gold: gold
+                currentHealth: currentHealth, gold: gold,
+                isActive:isActive
+
             }
         })
         if (callback)
@@ -56,4 +70,4 @@ const editPlayer = (dispatch) => {
     }
 }
 
-export default [addPlayer, editPlayer, deletePlayer, getPlayer, updateIsActivePlayer]
+export default [deleteDeadPlayers,deleteAllPlayers,addPlayer, editPlayer, deletePlayer, getPlayer, updateIsActivePlayer]

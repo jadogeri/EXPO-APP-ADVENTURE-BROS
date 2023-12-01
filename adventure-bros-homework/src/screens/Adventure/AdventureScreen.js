@@ -9,9 +9,11 @@ import getRandomStage from '../../utils/getRandomStage';
 import { useRoute } from "@react-navigation/native";
 import BigIcon from '../../components/BigIcon';
 import getBattleStage from '../../utils/getBattleStage';
+import getRandomLevel from '../../utils/getRandomLevel'
 
 const windowHeight = Dimensions.get('window').height;
 
+let challengeLevel : 0;
 let stageName = ''
 let stageKey=''
 let stageList = [
@@ -50,6 +52,14 @@ const AdventureScreen = (props) => {
     stageKey = getRandomStageKey(stageList);
     stageName = getRandomStage(stageKey)
 
+    let totalLevel = team.reduce((accum,item) => accum + item.level, 0)
+
+    console.log(JSON.stringify(totalLevel))
+    console.log(state[0].mode)
+    console.log( challengeLevel = getRandomLevel(state[0].mode))
+    console.log('challengeLevel', challengeLevel )
+
+
     return (
         <View>
             
@@ -57,7 +67,11 @@ const AdventureScreen = (props) => {
             <View style={{alignItems:'center', backgroundColor:'blue'}}>
             <Text style={{color:'yellow'}}>{stageName}</Text>
             <Text style={{color:'yellow'}}>ROUND {state[0].current_round}</Text>
-            <Text style={{color:'yellow'}}>CHALLENGE LEVEL ?</Text>             
+            <Text style={{color:'yellow'}}>CHALLENGE LEVEL ?</Text>   
+            <Text>{JSON.stringify(team)}</Text>  
+            <Text>{JSON.stringify(totalLevel)}</Text>  
+
+
 
             </View>
             <Text>{JSON.stringify(stageKey)}</Text>
@@ -78,7 +92,8 @@ const AdventureScreen = (props) => {
             </View>
             <NavigationButton1 
               name='GO TO BATTLE'
-              navigate={()=>{props.navigation.navigate('Verdict',{stageName : stageName, stageKey : stageKey, team : team})}}
+              navigate={()=>{props.navigation.navigate('Verdict',{stageName : stageName, stageKey : stageKey, team : team,
+                                                                  challengeLevel:challengeLevel,totalLevel : totalLevel})}}
             />
 
             </ImageBackground>
