@@ -13,7 +13,7 @@ import getRandomLevel from '../../utils/getRandomLevel'
 
 const windowHeight = Dimensions.get('window').height;
 
-let challengeLevel : 0;
+let challengeLevel = 0;
 let stageName = ''
 let stageKey=''
 let stageList = [
@@ -48,6 +48,8 @@ const AdventureScreen = (props) => {
     //const team = props.navigation.getParam('team');
     const team = route.params?.team
     const {state}  = useContext(GameContext);   
+    const {state : editPlayerRoundWin, editPlayerRoundLose} = useContext(PlayerContext);
+   
 
     stageKey = getRandomStageKey(stageList);
     stageName = getRandomStage(stageKey)
@@ -92,8 +94,12 @@ const AdventureScreen = (props) => {
             </View>
             <NavigationButton1 
               name='GO TO BATTLE'
-              navigate={()=>{props.navigation.navigate('Verdict',{stageName : stageName, stageKey : stageKey, team : team,
-                                                                  challengeLevel:challengeLevel,totalLevel : totalLevel})}}
+              navigate={()=>{ totalLevel - challengeLevel > 0 ?
+                editPlayerRoundWin(challengeLevel) :
+                editPlayerRoundLose(challengeLevel) ;
+                props.navigation.navigate('Verdict',{stageName : stageName, stageKey : stageKey, team : team,
+                  challengeLevel:challengeLevel,totalLevel : totalLevel})
+              }}
             />
 
             </ImageBackground>

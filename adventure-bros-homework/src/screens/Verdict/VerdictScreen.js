@@ -1,5 +1,5 @@
 {/* imports */ }
-import React, { useContext } from 'react';
+import React, { useContext, useReducer } from 'react';
 import { FlatList, View, Button, TouchableOpacity, Text, ImageBackground, StyleSheet, Image, Dimensions } from 'react-native';
 import NavigationButton1 from '../../components/NavigationButton1';
 import { Context as PlayerContext } from '../../context/PlayerContext';
@@ -8,6 +8,9 @@ import getRandomStage from '../../utils/getRandomStage';
 import { useRoute } from "@react-navigation/native";
 import BigIcon from '../../components/BigIcon';
 import getBattleStage from '../../utils/getBattleStage';
+import DeadBigIcon from '../../components/DeadBigIcon';
+import TeamImage from '../../components/TeamImage';
+import { playerReducer } from '../../reducers/playerReducer';
 
 
 //stageName : stageName, stageKey : stageKey, team : team
@@ -23,7 +26,10 @@ const VerdictScreen = (props) => {
     const totalLevel = route.params?.totalLevel
 
 
-    const {state, deleteAllPlayers,editRoundCount}  = useContext(GameContext);   
+    const {state, deleteAllPlayers,editRoundCount}  = useContext(GameContext); 
+    const {state : playerState} = useContext(PlayerContext);  
+    //const [teamState,roundDispatch] = useReducer(roundReducer,team);
+    const [teamState,roundDispatch] = useReducer(playerReducer,team);
 
     return (
         <View>
@@ -42,13 +48,20 @@ const VerdictScreen = (props) => {
                 
                 <Text>p1 {JSON.stringify(team)}</Text>
                 <Text>{JSON.stringify(state)}</Text>
+                <Text>p1 {JSON.stringify(teamState)}</Text>
+
                 <View style={{flexDirection:'column'}}>
-            <FlatList 
+                
+
+                <FlatList 
                 data={team}
                 keyExtractor={(key)=>{ return key.id}}
                 renderItem={({item})=>{
 
-                    return  <BigIcon heroName={item.name}/>               
+                    item.currentHealth > 0?
+                    <BigIcon heroName={item.name}/> :
+                    <DeadBigIcon heroName={item.name} />
+
                     
                 }}
             />

@@ -70,4 +70,31 @@ const editPlayer = (dispatch) => {
     }
 }
 
-export default [deleteDeadPlayers,deleteAllPlayers,addPlayer, editPlayer, deletePlayer, getPlayer, updateIsActivePlayer]
+const editPlayerRoundWin = (dispatch) => {
+    return (id, challengeLevel, callback) => {
+        dispatch({
+            type: 'round_win', payload: {
+                id: id, challengeLevel : challengeLevel
+            }
+        })
+        if (callback)
+            callback();
+    }
+}
+
+const editPlayerRoundLose = (dispatch) => {
+    return (id, challengeLevel, callback) => {
+        dispatch({
+            type: 'round_lose', payload: {
+                id: id, challengeLevel : challengeLevel
+            }
+        })
+        if (callback)
+            callback();
+    }
+}
+
+
+
+
+export default [deleteDeadPlayers,deleteAllPlayers,addPlayer, editPlayer, deletePlayer, getPlayer, updateIsActivePlayer, editPlayerRoundWin,editPlayerRoundLose]
